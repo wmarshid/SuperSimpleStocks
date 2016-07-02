@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class DividendYieldCommonTests {
+public class CommonStockTests {
 	
 	Stock sut;
 	int marketPrice;
@@ -15,15 +15,17 @@ public class DividendYieldCommonTests {
 	}
 	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
 	public void DividendYieldIsLastDivOverMarketPrice() {
 		int expectedResult =  sut.getLastDividend() / marketPrice;
 		int result = sut.calcDividendYield(marketPrice);
 		assert(result == expectedResult);
+	}
+	
+	@Test
+	public void PERatioIsMarketPriceOverDividend() {
+		int expectedResult = marketPrice / sut.getLastDividend();
+		int result = sut.calcPriceEarningsRatio(marketPrice);
+		assert(expectedResult == result);
 	}
 
 }
