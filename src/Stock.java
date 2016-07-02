@@ -32,7 +32,7 @@ public class Stock {
 		return ticker;
 	}
 	
-	public int getlastDividend() {
+	public int getLastDividend() {
 		return lastDividend;
 	}
 	
@@ -54,5 +54,18 @@ public class Stock {
 	public Boolean isPreferredStock() {
 		return (stockType == TYPE.PREFERRED);
 	}
-
+	
+	public int calcDividendYield(int marketPrice) {
+		if (isCommonStock()) {
+			return lastDividend / marketPrice;
+		}
+		else {
+			int yield = ((fixedDividend / 100) / parValue);
+			return yield / marketPrice;
+		}
+	}
+	
+	public int calcPriceEarningsRatio(int marketPrice) {
+		return -1;
+	}
 }
