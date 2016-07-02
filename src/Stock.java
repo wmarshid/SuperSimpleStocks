@@ -66,6 +66,6 @@ public class Stock {
 	}
 	
 	public int calcPriceEarningsRatio(int marketPrice) {
-		return -1;
+		return marketPrice / lastDividend;
 	}
 }
