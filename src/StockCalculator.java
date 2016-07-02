@@ -1,7 +1,7 @@
 
 public class StockCalculator {
 	
-	public int calcDivYield() {
+	public static int calcDivYield() {
 		return 0;
 	}
 
