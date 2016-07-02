@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Stock {
 	
 	public enum TYPE {
@@ -11,12 +13,15 @@ public class Stock {
 	private int fixedDividend;
 	private int parValue;
 	
+	private ArrayList<Trade> trades;
+	
 	// constructor for common stock
 	public Stock(String ticker, int lastDiv, int parValue) {
 		this.ticker = ticker;
 		this.lastDividend = lastDiv;
 		this.parValue = parValue;
 		this.stockType = TYPE.COMMON;
+		this.trades = new ArrayList<Trade>();
 	}
 	
 	//constructor for preferred stock
@@ -47,6 +52,10 @@ public class Stock {
 		return 0;
 	}
 	
+	public ArrayList<Trade> getTrades() {
+		return trades;
+	}
+	
 	public Boolean isCommonStock() {
 		return (stockType == TYPE.COMMON);
 	}
@@ -68,4 +77,9 @@ public class Stock {
 	public int calcPriceEarningsRatio(int marketPrice) {
 		return marketPrice / lastDividend;
 	}
-}
+	
+	public void recordTrade(int quantity, Trade.INDICATOR tradeType, int tradePrice)  {
+		Trade t = new Trade(quantity, tradeType, tradePrice);
+		trades.add(t);
+	}
+ }

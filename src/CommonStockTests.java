@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -26,6 +28,14 @@ public class CommonStockTests {
 		int expectedResult = marketPrice / sut.getLastDividend();
 		int result = sut.calcPriceEarningsRatio(marketPrice);
 		assert(expectedResult == result);
+	}
+	
+	@Test
+	public void TradeRetrievedIsSameAsOneRecorded() {
+		int expectedQuantity = 1000;
+		sut.recordTrade(expectedQuantity, Trade.INDICATOR.BUY, marketPrice * expectedQuantity);
+		ArrayList<Trade> result = sut.getTrades();
+		assert(result.get(0).getQuantity() == expectedQuantity);
 	}
 
 }
