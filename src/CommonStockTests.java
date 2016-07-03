@@ -39,39 +39,4 @@ public class CommonStockTests {
 		ArrayList<Trade> result = sut.getTrades();
 		assert(result.get(0).getQuantity() == expectedQuantity);
 	}
-	
-	@Ignore
-	public void populateSutWithTrades(List<Trade> trades) {
-		
-		for (Trade t : trades) {
-			sut.recordTrade(t);
-		}
-	}
-	
-	@Test
-	public void VolWeightPriceIsAsShownByFormula() {
-		List<Trade> trades = new ArrayList<Trade>();
-		trades.add(new Trade(500, INDICATOR.BUY, 149));
-		trades.add(new Trade(550, INDICATOR.SELL, 151));
-		trades.add(new Trade(400, INDICATOR.SELL, 152));
-		trades.add(new Trade(600, INDICATOR.BUY, 154));
-		
-		int totalNumerator = 310750;  // sum of all quantities multiplied by trade price
-		int totalDenominator = 2050;  // sum of all quantities
-		double expectedResult = totalNumerator / totalDenominator;
-		
-		// populate sut with trades
-		for (Trade t : trades) {
-			sut.recordTrade(t);
-		}
-		
-		double result = sut.calcVolWeightedStockPrice();
-		assert(result == expectedResult);
-	}
-	
-	@Test
-	public void VolWeightCalcOnlyForRecentTrades() {
-		assert(false);
-	}
-
 }
