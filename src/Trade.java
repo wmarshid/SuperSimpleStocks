@@ -4,11 +4,6 @@ import java.util.Date;
 
 public class Trade {
 	
-	public enum INDICATOR {
-		BUY,
-		SELL;
-	}
-	
 	private Date timestamp;
 	private int quantity;
 	private INDICATOR tradeType;

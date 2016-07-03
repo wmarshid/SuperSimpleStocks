@@ -78,7 +78,7 @@ public class Stock {
 		return marketPrice / lastDividend;
 	}
 	
-	public void recordTrade(int quantity, Trade.INDICATOR tradeType, int tradePrice)  {
+	public void recordTrade(int quantity, INDICATOR tradeType, int tradePrice)  {
 		Trade t = new Trade(quantity, tradeType, tradePrice);
 		trades.add(t);
 	}

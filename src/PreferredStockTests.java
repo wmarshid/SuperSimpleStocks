@@ -34,7 +34,7 @@ public class PreferredStockTests {
 	@Test
 	public void TradeRetrievedIsSameAsOneRecorded() {
 		int expectedQuantity = 1000;
-		sut.recordTrade(expectedQuantity, Trade.INDICATOR.BUY, marketPrice * expectedQuantity);
+		sut.recordTrade(expectedQuantity, INDICATOR.BUY, marketPrice * expectedQuantity);
 		ArrayList<Trade> result = sut.getTrades();
 		assert(result.get(0).getQuantity() == expectedQuantity);
 	}

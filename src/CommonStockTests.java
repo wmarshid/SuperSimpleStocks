@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import Trade.INDICATOR;
+
 public class CommonStockTests {
 	
 	Stock sut;
@@ -33,9 +35,21 @@ public class CommonStockTests {
 	@Test
 	public void TradeRetrievedIsSameAsOneRecorded() {
 		int expectedQuantity = 1000;
-		sut.recordTrade(expectedQuantity, Trade.INDICATOR.BUY, marketPrice * expectedQuantity);
+		sut.recordTrade(expectedQuantity, INDICATOR.BUY, marketPrice * expectedQuantity);
 		ArrayList<Trade> result = sut.getTrades();
 		assert(result.get(0).getQuantity() == expectedQuantity);
+	}
+	
+	public void populateSutWithTrades(Stock sut) {
+		sut.recordTrade(500, INDICATOR.BUY, 149);
+		sut.recordTrade(550, INDICATOR.BUY, 151);
+		sut.recordTrade(400, INDICATOR.BUY, 152);
+		sut.recordTrade(600, INDICATOR.BUY, 154);
+	}
+	
+	@Test
+	public void VolWeightPriceIsAsShownByFormula() {
+		
 	}
 
 }
