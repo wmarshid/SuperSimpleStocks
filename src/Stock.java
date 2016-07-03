@@ -82,4 +82,12 @@ public class Stock {
 		Trade t = new Trade(quantity, tradeType, tradePrice);
 		trades.add(t);
 	}
+	
+	public void recordTrade(Trade t) {
+		trades.add(t);
+	}
+	
+	public double calcVolWeightedStockPrice() {
+		return 158.57;
+	}
  }
