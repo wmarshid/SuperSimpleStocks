@@ -33,6 +33,7 @@ public class Stock {
 		this.parValue = parValue;
 		this.fixedDividend = fixedDiv;
 		this.stockType = TYPE.PREFERRED;
+		this.trades = new ArrayList<Trade>();
 	}
 
 	public String getTicker() {
