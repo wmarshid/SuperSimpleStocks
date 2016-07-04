@@ -92,7 +92,7 @@ public class Stock {
 		return TradeHelper.getRecentTrades(trades);
 	}
 	
-	public double calcVolWeightedStockPrice() {
+	public float calcVolWeightedStockPrice() {
 		// sum of all quantities multiplied by share price over sum of all quantities
 		List<Trade> recentTrades = TradeHelper.getRecentTrades(trades);
 		int totalPriceQuantity = 0;
@@ -103,6 +103,7 @@ public class Stock {
 			totalPriceQuantity += quantity * tradePrice;
 			totalQuantity += quantity;
 		}
-		return (double) totalPriceQuantity / totalQuantity;	// keeps level of precision without assignment
+		float result = (float) totalPriceQuantity / totalQuantity;	// casting to float first maintains precision
+		return result;
 	}
  }

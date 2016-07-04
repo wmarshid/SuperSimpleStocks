@@ -28,5 +28,7 @@ public class TradeHelper {
 		
 		return recentTrades;
 	}
+	
+	//public static float 
 
 }

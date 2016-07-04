@@ -26,8 +26,9 @@ public class VolWeightedPriceTests {
 	
 	@Test
 	public void VolWeightPriceIsAsShownByFormula() {
-		double actualResult = sut.calcVolWeightedStockPrice();
-		assert(actualResult == (double) totalNumerator / totalDenominator);
+		float expectedResult = (float) totalNumerator / totalDenominator;
+		float actualResult = sut.calcVolWeightedStockPrice();
+		assert(actualResult == expectedResult);
 	}
 
 	@Test
