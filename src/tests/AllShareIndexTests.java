@@ -22,7 +22,7 @@ public class AllShareIndexTests {
 		sut.add(new Stock("TEA", 0, 100));
 		sut.add(new Stock("POP", 8, 100));
 		sut.add(new Stock("ALE", 23, 60));
-		sut.add(new Stock("GIN", 8, 100));
+		sut.add(new Stock("GIN", 8, 100, 2));
 		sut.add(new Stock("JOE", 13, 250));
 		
 		totalParValue = 100 * 100 * 60 * 100 * 250;

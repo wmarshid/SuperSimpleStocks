@@ -67,18 +67,18 @@ public class Stock {
 		return (stockType == TYPE.PREFERRED);
 	}
 	
-	public int calcDividendYield(int marketPrice) {
+	public float calcDividendYield(int marketPrice) {
 		if (isCommonStock()) {
-			return lastDividend / marketPrice;
+			return (float) lastDividend / marketPrice;
 		}
 		else {
 			int yield = ((fixedDividend / 100) / parValue);
-			return yield / marketPrice;
+			return (float) yield / marketPrice;
 		}
 	}
 	
-	public int calcPriceEarningsRatio(int marketPrice) {
-		return marketPrice / lastDividend;
+	public float calcPriceEarningsRatio(int marketPrice) {
+		return (float) marketPrice / lastDividend;
 	}
 	
 	public void recordTrade(int quantity, INDICATOR tradeType, int tradePrice)  {

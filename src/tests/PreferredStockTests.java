@@ -22,15 +22,15 @@ public class PreferredStockTests {
 	@Test
 	public void DividendYieldIsFixedDivWithParOverMarketPrice() {
 		int fixedDivPercentage = sut.getFixedDividend() / 100;
-		int expectedResult = (fixedDivPercentage * sut.getParValue()) / 100;
-		int actualResult = sut.calcDividendYield(marketPrice);
+		float expectedResult = (fixedDivPercentage * sut.getParValue()) / 100;
+		float actualResult = sut.calcDividendYield(marketPrice);
 		assert(actualResult == expectedResult);
 	}
 	
 	@Test
 	public void PERatioIsMarketPriceOverDividend() {
-		int expectedResult = marketPrice / sut.getLastDividend();
-		int actualResult = sut.calcPriceEarningsRatio(marketPrice);
+		float expectedResult = (float) marketPrice / sut.getLastDividend();
+		float actualResult = sut.calcPriceEarningsRatio(marketPrice);
 		assert(actualResult == expectedResult);
 	}
 	

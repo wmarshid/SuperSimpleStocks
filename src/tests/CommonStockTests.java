@@ -21,15 +21,15 @@ public class CommonStockTests {
 	
 	@Test
 	public void DividendYieldIsLastDivOverMarketPrice() {
-		int expectedResult =  sut.getLastDividend() / marketPrice;
-		int actualResult = sut.calcDividendYield(marketPrice);
+		float expectedResult = (float) sut.getLastDividend() / marketPrice;
+		float actualResult = sut.calcDividendYield(marketPrice);
 		assert(actualResult == expectedResult);
 	}
 	
 	@Test
 	public void PERatioIsMarketPriceOverDividend() {
-		int expectedResult = marketPrice / sut.getLastDividend();
-		int actualResult = sut.calcPriceEarningsRatio(marketPrice);
+		float expectedResult = (float) marketPrice / sut.getLastDividend();
+		float actualResult = sut.calcPriceEarningsRatio(marketPrice);
 		assert(actualResult == expectedResult);
 	}
 	
