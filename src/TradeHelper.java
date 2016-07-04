@@ -29,6 +29,20 @@ public class TradeHelper {
 		return recentTrades;
 	}
 	
-	//public static float 
+	public static double calcAllShareIndex(List<Stock> stocks) {
+
+		// get the product of all par values
+		int totalParValue = 1;
+		for (Stock s : stocks) {
+			totalParValue *= s.getParValue();
+		}
+		
+		// calculates the geometric mean of par values for all stocks
+		int root = stocks.size();
+		float N = (float) 1 / root;
+		double result = Math.pow(totalParValue, N);
+		return result;
+	}
+	
 
 }
