@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,15 +26,14 @@ public class VolWeightedPriceTests {
 	
 	@Test
 	public void VolWeightPriceIsAsShownByFormula() {
-		double expectedResult = totalNumerator / totalDenominator;
-		
-		double result = sut.calcVolWeightedStockPrice();
-		assert(result == expectedResult);
+		double actualResult = sut.calcVolWeightedStockPrice();
+		assert(actualResult == (double) totalNumerator / totalDenominator);
 	}
 
 	@Test
 	public void VolWeightCalcOnlyForRecentTrades() {
-		fail("Not yet implemented");
+		List<Trade> recentTrades = TradeHelper.getRecentTrades(sut.getAllTrades());
+		assert(recentTrades.size() == 4);	// should contain all the input trades
 	}
 
 }

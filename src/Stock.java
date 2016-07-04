@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Stock {
 	
@@ -13,7 +14,7 @@ public class Stock {
 	private int fixedDividend;
 	private int parValue;
 	
-	private ArrayList<Trade> trades;
+	private List<Trade> trades;
 	
 	// constructor for common stock
 	public Stock(String ticker, int lastDiv, int parValue) {
@@ -52,7 +53,7 @@ public class Stock {
 		return 0;
 	}
 	
-	public ArrayList<Trade> getTrades() {
+	public List<Trade> getAllTrades() {
 		return trades;
 	}
 	
@@ -87,7 +88,21 @@ public class Stock {
 		trades.add(t);
 	}
 	
+	public List<Trade> getRecentTrades() {
+		return TradeHelper.getRecentTrades(trades);
+	}
+	
 	public double calcVolWeightedStockPrice() {
-		return 158.57;
+		// sum of all quantities multiplied by share price over sum of all quantities
+		List<Trade> recentTrades = TradeHelper.getRecentTrades(trades);
+		int totalPriceQuantity = 0;
+		int totalQuantity = 0;
+		for (Trade t : recentTrades) {
+			int quantity = t.getQuantity();
+			int tradePrice = t.getTradePrice();
+			totalPriceQuantity += quantity * tradePrice;
+			totalQuantity += quantity;
+		}
+		return (double) totalPriceQuantity / totalQuantity;	// keeps level of precision without assignment
 	}
  }

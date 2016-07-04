@@ -1,6 +1,4 @@
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,22 +18,22 @@ public class PreferredStockTests {
 	public void DividendYieldIsFixedDivWithParOverMarketPrice() {
 		int fixedDivPercentage = sut.getFixedDividend() / 100;
 		int expectedResult = (fixedDivPercentage * sut.getParValue()) / 100;
-		int result = sut.calcDividendYield(marketPrice);
-		assert(result == expectedResult);
+		int actualResult = sut.calcDividendYield(marketPrice);
+		assert(actualResult == expectedResult);
 	}
 	
 	@Test
 	public void PERatioIsMarketPriceOverDividend() {
 		int expectedResult = marketPrice / sut.getLastDividend();
-		int result = sut.calcPriceEarningsRatio(marketPrice);
-		assert(expectedResult == result);
+		int actualResult = sut.calcPriceEarningsRatio(marketPrice);
+		assert(actualResult == expectedResult);
 	}
 	
 	@Test
 	public void TradeRetrievedIsSameAsOneRecorded() {
 		int expectedQuantity = 1000;
 		sut.recordTrade(expectedQuantity, INDICATOR.BUY, marketPrice * expectedQuantity);
-		ArrayList<Trade> result = sut.getTrades();
+		List<Trade> result = sut.getAllTrades();
 		assert(result.get(0).getQuantity() == expectedQuantity);
 	}
 
