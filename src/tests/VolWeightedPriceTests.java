@@ -1,7 +1,13 @@
+package tests;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import trading.INDICATOR;
+import trading.Stock;
+import trading.Trade;
+import trading.TradeHelper;
 
 public class VolWeightedPriceTests {
 	

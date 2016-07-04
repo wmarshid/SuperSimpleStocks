@@ -1,3 +1,4 @@
+package trading;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,10 +82,6 @@ public class Stock {
 	
 	public void recordTrade(int quantity, INDICATOR tradeType, int tradePrice)  {
 		Trade t = new Trade(quantity, tradeType, tradePrice);
-		trades.add(t);
-	}
-	
-	public void recordTrade(Trade t) {
 		trades.add(t);
 	}
 	

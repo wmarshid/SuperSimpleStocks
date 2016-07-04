@@ -1,22 +1,28 @@
+package tests;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-public class CommonStockTests {
-	
+import trading.INDICATOR;
+import trading.Stock;
+import trading.Trade;
+
+public class PreferredStockTests {
+
 	Stock sut;
 	int marketPrice;
-
+	
 	@Before
-	public void GivenACommonTypeStockWithLastDividend23() {
-		sut = new Stock("ALE", 23, 60);
+	public void GivenAPreferredTypeStockWithFixedDividend2() {
+		sut = new Stock("GIN", 8, 100, 2);
 		marketPrice = 150;
 	}
 	
 	@Test
-	public void DividendYieldIsLastDivOverMarketPrice() {
-		int expectedResult =  sut.getLastDividend() / marketPrice;
+	public void DividendYieldIsFixedDivWithParOverMarketPrice() {
+		int fixedDivPercentage = sut.getFixedDividend() / 100;
+		int expectedResult = (fixedDivPercentage * sut.getParValue()) / 100;
 		int actualResult = sut.calcDividendYield(marketPrice);
 		assert(actualResult == expectedResult);
 	}
@@ -35,4 +41,5 @@ public class CommonStockTests {
 		List<Trade> result = sut.getAllTrades();
 		assert(result.get(0).getQuantity() == expectedQuantity);
 	}
+
 }

@@ -1,10 +1,13 @@
-import static org.junit.Assert.*;
+package tests;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import trading.Stock;
+import trading.TradeHelper;
 
 public class AllShareIndexTests {
 	
