@@ -13,7 +13,9 @@ public class AllShareIndexTests {
 	
 	List<Stock> sut;
 	int totalParValue;
-	int root;
+	
+	int[] marketPrices;
+	int totalMarketPrice;
 
 	@Before
 	public void GivenAnIndexOfStocksWithVaryingParValues() {
@@ -26,14 +28,24 @@ public class AllShareIndexTests {
 		sut.add(new Stock("JOE", 13, 250));
 		
 		totalParValue = 100 * 100 * 60 * 100 * 250;
-		root = sut.size();
+		
+		marketPrices = new int[] {152,146,87,94,192};
+		totalMarketPrice = 152 * 146 * 87 * 94 * 192;
 	}
 
 	@Test
-	public void CalculateAllShareIndexUsingGeometricMean() {
-		float N = (float) 1 / root;
+	public void CalculateAllShareIndexOfParValues() {
+		float N = (float) 1 / sut.size();
 		double expectedResult = Math.pow(totalParValue, N); // geometric mean formula
 		double actualResult = TradeHelper.calcAllShareIndex(sut);
+		assert(actualResult == expectedResult);
+	}
+	
+	@Test
+	public void CalculateAllShareIndexOfMarketPrices() {
+		float N = (float) 1 / marketPrices.length;
+		double expectedResult = Math.pow(totalMarketPrice, N); // geometric mean formula
+		double actualResult = TradeHelper.calcAllShareIndex(marketPrices);
 		assert(actualResult == expectedResult);
 	}
 

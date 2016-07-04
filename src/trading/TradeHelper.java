@@ -30,6 +30,13 @@ public class TradeHelper {
 		return recentTrades;
 	}
 	
+	private static double calcGeometricMean(int totalPrice, int root) {
+		// calculates the geometric mean of prices for all stocks
+		float N = (float) 1 / root;
+		double result = Math.pow(totalPrice, N);
+		return result;
+	}
+	
 	public static double calcAllShareIndex(List<Stock> stocks) {
 
 		// get the product of all par values
@@ -37,12 +44,17 @@ public class TradeHelper {
 		for (Stock s : stocks) {
 			totalParValue *= s.getParValue();
 		}
+		return calcGeometricMean(totalParValue, stocks.size());
+	}
+	
+	public static double calcAllShareIndex(int[] marketPrices) {
 		
-		// calculates the geometric mean of par values for all stocks
-		int root = stocks.size();
-		float N = (float) 1 / root;
-		double result = Math.pow(totalParValue, N);
-		return result;
+		// get the product of all market prices
+		int totalMarketPrice = 1;
+		for (int price : marketPrices) {
+			totalMarketPrice *= price;
+		}
+		return calcGeometricMean(totalMarketPrice, marketPrices.length);
 	}
 	
 
